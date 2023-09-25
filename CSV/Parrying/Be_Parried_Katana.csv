@@ -1,0 +1,4 @@
+---,direction,state,Montage,PlayRatio,StartSection,Hit_Sound,bCanMove
+0,"Front","Idle","AnimMontage'/Game/_Character/_Player/_Third_Player/Animations/Katana/Parring_Ani/Parring_F/KatanaSamurai_RSting_DeflectR_CounterExecuted_Sample_Montage.KatanaSamurai_RSting_DeflectR_CounterExecuted_Sample_Montage'","1.000000","None","None","False"
+1,"Left","Idle","AnimMontage'/Game/_Character/_Player/_Third_Player/Animations/Katana/Parring_Ani/Parring_L/Katana_BeParried_LMontage.Katana_BeParried_LMontage'","1.000000","None","None","False"
+2,"Right","Idle","AnimMontage'/Game/_Character/_Player/_Third_Player/Animations/Katana/Parring_Ani/Parring_R/Katana_BeParried_RMontage.Katana_BeParried_RMontage'","1.000000","None","None","False"

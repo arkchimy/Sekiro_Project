@@ -1,0 +1,11 @@
+---,direction,Tag,Montage,PlayRatio,StartSection,Hit_Sound,bCanMove
+0,"Front_Left","Normal","AnimMontage'/Game/_Character/_Player/_Third_Player/Animations/Hitted/P_Hit_Forward_Left_Montage.P_Hit_Forward_Left_Montage'","1.000000","None","None","False"
+1,"Front_Right","Normal","AnimMontage'/Game/_Character/_Player/_Third_Player/Animations/Hitted/P_Hit_Forward_Right_Montage.P_Hit_Forward_Right_Montage'","1.000000","None","None","False"
+2,"Back_Left","Normal","AnimMontage'/Game/_Character/Enemy/Dummy/Animations/Hitted/Montage/E_BackHit_Left_Montage.E_BackHit_Left_Montage'","1.000000","None","None","False"
+3,"Back_Right","Normal","AnimMontage'/Game/_Character/Enemy/Dummy/Animations/Hitted/Montage/E_BackHit_Right_Montage.E_BackHit_Right_Montage'","1.000000","None","None","False"
+4,"Front_Left","AirBone","AnimMontage'/Game/_Character/Enemy/Dummy/Animations/Hitted/Montage/Ani_Dummy_Airbone_Montage.Ani_Dummy_Airbone_Montage'","0.700000","None","None","False"
+5,"Front_Right","AirBone","AnimMontage'/Game/_Character/Enemy/Dummy/Animations/Hitted/Montage/Ani_Dummy_Airbone_Montage.Ani_Dummy_Airbone_Montage'","0.700000","None","None","False"
+6,"Front_Left","Stun","AnimMontage'/Game/_Character/Enemy/Dummy/Animations/Hitted/Montage/Ani_Dummy_Stun_Montage1.Ani_Dummy_Stun_Montage1'","1.000000","None","None","False"
+7,"Front_Right","Stun","AnimMontage'/Game/_Character/Enemy/Dummy/Animations/Hitted/Montage/Ani_Dummy_Stun_Montage1.Ani_Dummy_Stun_Montage1'","1.000000","None","None","False"
+8,"Front_Left","Groggy","AnimMontage'/Game/_Character/Enemy/Dummy/Animations/Hitted/Montage/Ani_Dummy_Groggy_Montage.Ani_Dummy_Groggy_Montage'","1.000000","None","None","False"
+9,"Front_Left","Groggy","AnimMontage'/Game/_Character/Enemy/Dummy/Animations/Hitted/Montage/Ani_Dummy_Groggy_Montage.Ani_Dummy_Groggy_Montage'","1.000000","None","None","False"

@@ -1,0 +1,5 @@
+﻿,ID,Object,Texture2D
+0,0,Blueprint'/Game/_Objects/Map_Object/Builds/Build_Object/BPC_OpenTent.BPC_OpenTent_C',Texture2D'/Game/OpenTent.OpenTent'
+1,1,Blueprint'/Game/_Objects/Map_Object/Builds/Build_Object/BP_Weapon_Rack.BP_Weapon_Rack_C',Texture2D'/Game/Weapon_Stock.Weapon_Stock'
+2,2,Blueprint'/Game/_Objects/Map_Object/Builds/Build_Object/BP_Brazier.BP_Brazier_C',Texture2D'/Game/Braizer.Braizer'
+3,3,,

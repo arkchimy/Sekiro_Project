@@ -1,0 +1,5 @@
+---,direction,WeekBone,Montage,PlayRatio,StartSection,bCanMove
+0,"Front_Left","(""head"",""neck"")","AnimMontage'/Game/_Character/Enemy/Dummy/Animations/Hitted/Montage/E_Hit_Forward_Head_Montage.E_Hit_Forward_Head_Montage'","1.000000","None","False"
+1,"Front_Right","(""head"",""neck"")","AnimMontage'/Game/_Character/Enemy/Dummy/Animations/Hitted/Montage/E_Hit_Forward_Head_Montage.E_Hit_Forward_Head_Montage'","1.000000","None","False"
+2,"Back_Left","(""head"",""neck"")","AnimMontage'/Game/_Character/Enemy/Dummy/Animations/Hitted/Montage/E_BackHit_Head_Montage.E_BackHit_Head_Montage'","1.000000","None","False"
+3,"Back_Right","(""head"",""neck"")","AnimMontage'/Game/_Character/Enemy/Dummy/Animations/Hitted/Montage/E_BackHit_Head_Montage.E_BackHit_Head_Montage'","1.000000","None","False"

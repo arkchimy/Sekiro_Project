@@ -1,0 +1,12 @@
+---,id,Img,Name,SlotType,Attackment_class,DragDetect_Sound,Drop_Sound,Use_Sound
+0,"0","Texture2D'/Game/_Objects/Map_Object/Builds/katana.katana'","Sword","Sheath_Weapon","CCombatData_Player'/Game/_Character/_Player/DA_Katana_Player.DA_Katana_Player'","None","SoundCue'/Game/MedievalRPGToolkit/Cue/UI_Sword_03_Cue.UI_Sword_03_Cue'","None"
+1,"1","Texture2D'/Game/_Objects/Map_Object/Builds/ChestArmor_025.ChestArmor_025'","Club","Body","CCombatData_Player'/Game/_Character/_Player/DA_SteelArmor_Player.DA_SteelArmor_Player'","None","None","None"
+2,"2","Texture2D'/Game/_Objects/Map_Object/Builds/BowCapture1.BowCapture1'","Mace","Upper_Weapon","CCombatData_Player'/Game/_Character/_Player/DA_Archer_Player.DA_Archer_Player'","None","None","None"
+3,"3","Texture2D'/Game/Item_Icons/512/T_Item1_512.T_Item1_512'","earring","Etc2_2","None","None","None","None"
+4,"4","Texture2D'/Game/Item_Icons/512/T_Item120_512.T_Item120_512'","earring","Etc2_2","None","None","None","None"
+5,"5","Texture2D'/Game/Item_Icons/512/T_Item14_512.T_Item14_512'","earring","Etc1_1","None","None","None","None"
+6,"6","Texture2D'/Game/Item_Icons/256/T_Item152_256.T_Item152_256'","earring","Etc1_1","None","None","None","None"
+7,"7","Texture2D'/Game/Item_Icons/512/T_Item31_512.T_Item31_512'","None","Etc2_2","None","None","None","None"
+8,"8","Texture2D'/Game/Item_Icons/512/T_Item40_512.T_Item40_512'","None","Etc1_1","None","None","None","None"
+9,"9","Texture2D'/Game/Item_Icons/512/T_Item142_512.T_Item142_512'","None","Etc1_2","None","None","None","None"
+10,"10","Texture2D'/Game/Item_Icons/512/T_Item145_512.T_Item145_512'","None","Etc1_2","None","None","None","None"

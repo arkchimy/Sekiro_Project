@@ -1,0 +1,10 @@
+---,direction,Tag,state,Montage,PlayRatio,StartSection,Hit_Sound,bCanMove
+0,"Front","Normal","Idle","AnimMontage'/Game/_Character/Enemy/Goblin/Montage/Hitted/Anim_Goblin_body_NormalHit_Montage.Anim_Goblin_body_NormalHit_Montage'","1.000000","None","None","False"
+1,"Back","Normal","Idle","AnimMontage'/Game/_Character/Enemy/Goblin/Montage/Hitted/Anim_Goblin_body_NormalHit_Montage.Anim_Goblin_body_NormalHit_Montage'","1.000000","None","None","False"
+2,"Left","Normal","Idle","AnimMontage'/Game/_Character/Enemy/Goblin/Montage/Hitted/Anim_Goblin_body_NormalHit_Montage.Anim_Goblin_body_NormalHit_Montage'","1.000000","None","None","False"
+3,"Right","Normal","Idle","AnimMontage'/Game/_Character/Enemy/Goblin/Montage/Hitted/Anim_Goblin_body_NormalHit_Montage.Anim_Goblin_body_NormalHit_Montage'","1.000000","None","None","False"
+4,"Front","AirBone","Idle","AnimMontage'/Game/_Character/Enemy/Goblin/Montage/Anim_Goblin_Aitbone_Montage.Anim_Goblin_Aitbone_Montage'","0.500000","None","None","False"
+5,"Back","AirBone","Idle","AnimMontage'/Game/_Character/Enemy/Goblin/Montage/Anim_Goblin_Aitbone_Montage.Anim_Goblin_Aitbone_Montage'","0.500000","None","None","False"
+6,"Left","AirBone","Idle","AnimMontage'/Game/_Character/Enemy/Goblin/Montage/Anim_Goblin_Aitbone_Montage.Anim_Goblin_Aitbone_Montage'","0.500000","None","None","False"
+7,"Right","AirBone","Idle","AnimMontage'/Game/_Character/Enemy/Goblin/Montage/Anim_Goblin_Aitbone_Montage.Anim_Goblin_Aitbone_Montage'","0.800000","None","None","False"
+8,"Front","Normal","Fly","AnimMontage'/Game/_Character/Enemy/Goblin/Montage/Anim_Goblin_Aitbone_Montage.Anim_Goblin_Aitbone_Montage'","0.800000","None","None","False"
