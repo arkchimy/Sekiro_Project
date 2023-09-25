@@ -81,3 +81,4 @@ DerivedDataCache/*
 /Plugins
 *.sln
 *_BuiltData.uasset
+Content/
