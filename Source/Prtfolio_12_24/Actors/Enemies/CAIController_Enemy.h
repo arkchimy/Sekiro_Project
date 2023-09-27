@@ -24,15 +24,9 @@ public:
 public:
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
 		UAIPerceptionComponent* Perception;
-	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
-		class UBehaviorTreeComponent* BehaviorTreecmp;
-	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
-		class UBlackboardComponent* BlackBoradCmp;
 
-	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
-		class UBehaviorTree* BT_Asset;
-	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
-		class UBlackboardData* BB_Asset;
+
+
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
 		TSubclassOf<class UOperation_Context> Context_Class;
 
@@ -70,15 +64,15 @@ protected:
 	class UAISenseConfig_Sight* SightConfig;
 	
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Perception")
 		float AISightRadius = 900.f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Perception")
 		float AILoseSightRadius = 50.f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Perception")
 		float AIFieldOfView = 45.f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Perception")
 		float AISightAge = 5.f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Perception")
 		float AILastSeenLocation = 1200.f;
 /*
 	BlackBoard Function
@@ -90,6 +84,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void Monster_Dead(); // Operation & SetCanMove
 	void Set_TeamId(int32 val) { TeamID = val; }
+	UFUNCTION(BlueprintCallable)
+		void Monster_Action(); // Operation & SetCanMove
 	
 protected:
 	FString Enemy_Type = "Melee";

@@ -18,10 +18,14 @@ void UOperation_Context::Action(AGameActor* Target)
 {
 	CheckNull(Montage_Table);
 	CheckNull(OwnerActor);
+	
 	EMouseBut direction = EMouseBut::Front;
 	if(!!Target)
 		Hiteed_Direction(Target, &direction);
-	Operation->Action(Montage_Table, OwnerActor, direction);
+	if (!!Operation)
+		Operation->Action(Montage_Table, OwnerActor, direction);
+	else
+		CLog::Print("Operation is Null");
 }
 FVector UOperation_Context::Move(FVector Self_Loc)
 {

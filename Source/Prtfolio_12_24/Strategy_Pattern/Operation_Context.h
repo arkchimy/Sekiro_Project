@@ -29,6 +29,7 @@ public:
 private:
 	class IOperation_Strategy* Operation;
 	class AGameActor* OwnerActor;
+	
 protected:
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
 		UDataTable* Montage_Table; //   이게중요

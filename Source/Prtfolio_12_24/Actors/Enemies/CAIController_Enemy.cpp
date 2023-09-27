@@ -18,18 +18,15 @@
 #include "Perception/AIPerceptionComponent.h"
 
 
-#include "Strategy_Pattern/Operation_Context.h"
+#include "Strategy_Pattern/Context/Onyscidus_Context.h" // Onyscidus_Context
+#include "Strategy_Pattern/Operation_Context.h"	//Master_Context
+
 #include "Strategy_Pattern/Operation_Strategy.h"
 
 ACAIController_Enemy::ACAIController_Enemy()
 {
 	
-	/*CHelpers::CreateActorComponent<UBehaviorTree>(this, &BT_Asset, "BTAsset");
-	CHelpers::CreateActorComponent<UBlackboardData>(this, &BB_Asset, "BBAsset");*/
-
 	CHelpers::CreateActorComponent<UAIPerceptionComponent>(this, &Perception, "PerCeption");
-	CHelpers::CreateActorComponent<UBehaviorTreeComponent>(this, &BehaviorTreecmp, "BehaviorTreecmp");
-	CHelpers::CreateActorComponent<UBlackboardComponent>(this, &BlackBoradCmp, "BlackBoradCmp");
 
 	SetPerception();
 }
@@ -41,27 +38,28 @@ void ACAIController_Enemy::BeginPlay()
 	Super::BeginPlay();
 	State = CHelpers::GetComponent<UCStateComponent>(GetPawn());
 
+
+	FVector target_location;
+
 	AGameActor* GameActor = Cast<AGameActor>(GetPawn());
 	if(!!GameActor)
 		TeamID = GameActor->GetGenericTeamId();
+	if(!!Context_Class)
+		Context = NewObject<UOperation_Context>(this, Context_Class);
+	if (!!Context)
+	{
+		Context->Init_Context(GameActor);
+		IOperation_Strategy* oper = NewObject<UPatrol_Strategy>(Context,FName("Context_"), RF_MarkAsRootSet);
+		Context->Set_Operation(oper);
 
-	
+		target_location = Context->Move(GetPawn()->GetActorLocation());
+	}
 }
 
 
 void ACAIController_Enemy::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
-	FVector target_location;
-	Context = NewObject<UOperation_Context>(Context_Class);
-	if (!!Context)
-	{
-		IOperation_Strategy* oper = NewObject<UPatrol_Strategy>();
-		Context->Set_Operation(oper);
-		target_location = Context->Move(GetPawn()->GetActorLocation());
-	}
-	
-	BlackBoradCmp->SetValueAsVector("Home_Location", GetPawn()->GetActorLocation());
 	
 }
 
@@ -137,23 +135,23 @@ void ACAIController_Enemy::OnTargetDetected(AActor* Actor, FAIStimulus Stimulus)
 	if (Stimulus.WasSuccessfullySensed()) 
 	{
 		
-		BlackBoradCmp->SetValueAsObject("TargetActor", Actor);
+		//BlackBoradCmp->SetValueAsObject("TargetActor", Actor);
 		UKismetSystemLibrary::K2_ClearTimerHandle(this, target_handler);
 
 		CheckFalse(Operation_Type == EOperation_Type::Patrol); // 패트롤중이라면 실행
 
-		UObject* BB_Target = BlackBoradCmp->GetValueAsObject("TargetActor");
-		AGameActor* target = Cast<AGameActor>(BB_Target);
-		if (!!target) // Target이 Null이 아니라면
-		{ 
-			Operation_Type = EOperation_Type::Approach;
-			ACEnemy* enemy = Cast<ACEnemy>(GetPawn());
-			if (!!enemy)
-			{	// LookAt Target Notify 할떄 필요함
-				enemy->Set_TargetActor(target);
-			}
-		
-		}
+		//UObject* BB_Target = BlackBoradCmp->GetValueAsObject("TargetActor");
+		//AGameActor* target = Cast<AGameActor>(BB_Target);
+		//if (!!target) // Target이 Null이 아니라면
+		//{ 
+		//	Operation_Type = EOperation_Type::Approach;
+		//	ACEnemy* enemy = Cast<ACEnemy>(GetPawn());
+		//	if (!!enemy)
+		//	{	// LookAt Target Notify 할떄 필요함
+		//		enemy->Set_TargetActor(target);
+		//	}
+		//
+		//}
 	}
 	else
 		target_handler = UKismetSystemLibrary::K2_SetTimer(this, "Update_Target", 5.0f,false);
@@ -204,22 +202,22 @@ ETeamAttitude::Type ACAIController_Enemy::GetTeamAttitudeTowards(const AActor & 
 void ACAIController_Enemy::BlackBoard_Update()
 {
 	
-	BlackBoradCmp->SetValueAsEnum(FName("Operation"),int8(Operation_Type));
+	/*BlackBoradCmp->SetValueAsEnum(FName("Operation"),int8(Operation_Type));
 	
 	if (!!State) 
 	{
 		MoveUpdate(State->CanMove()); 
 	}
-	BlackBoradCmp->GetValueAsEnum(FName("Operation"));
+	BlackBoradCmp->GetValueAsEnum(FName("Operation"));*/
 
 }
 void ACAIController_Enemy::MoveUpdate(bool inval)
 {
-	BlackBoradCmp->SetValueAsBool("bCanMove", inval);
+	//BlackBoradCmp->SetValueAsBool("bCanMove", inval);
 }
 void ACAIController_Enemy::Damaged_Target(AActor* Attacker)
 {
-	BlackBoradCmp->SetValueAsObject("TargetActor", Attacker);
+	//BlackBoradCmp->SetValueAsObject("TargetActor", Attacker);
 	Operation_Type = EOperation_Type::Approach;
 
 
@@ -233,24 +231,34 @@ void ACAIController_Enemy::Damaged_Target(AActor* Attacker)
 void ACAIController_Enemy::Update_Target()
 {
 	
-	UObject* BB_Target = BlackBoradCmp->GetValueAsObject("TargetActor");
-	AActor* BB_Player = Cast<AActor>(BB_Target);
-	
-	if (!!BB_Player) 
-	{
-		FVector location = BB_Player->GetActorLocation();
-		BlackBoradCmp->SetValueAsVector("MoveTo_Location", location);
-		BlackBoradCmp->SetValueAsObject("TargetActor", NULL);
+	//UObject* BB_Target = BlackBoradCmp->GetValueAsObject("TargetActor");
+	//AActor* BB_Player = Cast<AActor>(BB_Target);
+	//
+	//if (!!BB_Player) 
+	//{
+	//	FVector location = BB_Player->GetActorLocation();
+	//	BlackBoradCmp->SetValueAsVector("MoveTo_Location", location);
+	//	BlackBoradCmp->SetValueAsObject("TargetActor", NULL);
 
-		
-	}
+	//	
+	//}
 
 }
 void ACAIController_Enemy::Monster_Dead()
 {
-	CheckTrue(Operation_Type == EOperation_Type::Death);
+	/*CheckTrue(Operation_Type == EOperation_Type::Death);
 	Operation_Type = EOperation_Type::Death;
 	BlackBoradCmp->SetValueAsEnum(FName("Operation"), int8(Operation_Type));
 	BehaviorTreecmp->StopTree();
-	ClearFocus(EAIFocusPriority::Default);
+	ClearFocus(EAIFocusPriority::Default);*/
+}
+void ACAIController_Enemy::Monster_Action()
+{
+	//CheckNull(Context);
+	if (!!Context) 
+	{
+		Context->Action();
+		return;
+	}
+	CLog::Print("Context is null");
 }
