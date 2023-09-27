@@ -18,6 +18,8 @@
 #include "Perception/AIPerceptionComponent.h"
 
 
+#include "Strategy_Pattern/Operation_Context.h"
+#include "Strategy_Pattern/Operation_Strategy.h"
 
 ACAIController_Enemy::ACAIController_Enemy()
 {
@@ -44,15 +46,21 @@ void ACAIController_Enemy::BeginPlay()
 		TeamID = GameActor->GetGenericTeamId();
 
 	
-	
 }
 
 
 void ACAIController_Enemy::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
-
-
+	FVector target_location;
+	Context = NewObject<UOperation_Context>(Context_Class);
+	if (!!Context)
+	{
+		IOperation_Strategy* oper = NewObject<UPatrol_Strategy>();
+		Context->Set_Operation(oper);
+		target_location = Context->Move(GetPawn()->GetActorLocation());
+	}
+	
 	BlackBoradCmp->SetValueAsVector("Home_Location", GetPawn()->GetActorLocation());
 	
 }
@@ -82,6 +90,7 @@ void ACAIController_Enemy::SetPerception()
 void ACAIController_Enemy::Random_Select_Operation()
 {
 	//int ran = rand() % int32(EOperation_Type::Max);
+	
 	int ran = rand() % 3;
 	switch(ran)
 	{

@@ -58,7 +58,7 @@ enum class ECamera_Sight : uint8 // Player 시점 Enum
 UENUM(BlueprintType)
 enum class EMouseBut : uint8 // 마우스 입력
 {
-	Left, Right,LR,L_LR,R_LR,Shift_Attack,T_Attack,R_Attack,Back_Attack,Max,
+	Left, Right,LR,L_LR,R_LR,Shift_Attack,T_Attack,R_Attack,Back_Attack,Front,Back,Max,
 };
 UENUM(BlueprintType)
 enum class EKeybord : uint8 // 키보드 입력

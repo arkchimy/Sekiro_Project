@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "AIController.h"
 #include "Perception/AIPerceptionComponent.h"
+
+
+
 #include "Utilities/CEnums.h"
 #include "CAIController_Enemy.generated.h"
 
@@ -30,6 +33,8 @@ public:
 		class UBehaviorTree* BT_Asset;
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
 		class UBlackboardData* BB_Asset;
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+		TSubclassOf<class UOperation_Context> Context_Class;
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
 		EOperation_Type Operation_Type = EOperation_Type::Patrol;
@@ -90,4 +95,5 @@ protected:
 	FString Enemy_Type = "Melee";
 	FTimerHandle target_handler;
 	class UCStateComponent* State;
+	class UOperation_Context* Context;
 };
