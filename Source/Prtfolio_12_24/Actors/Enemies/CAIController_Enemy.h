@@ -7,6 +7,7 @@
 #include "Perception/AIPerceptionComponent.h"
 
 
+#include "Strategy_Pattern/Operation_Strategy.h"
 
 #include "Utilities/CEnums.h"
 #include "CAIController_Enemy.generated.h"
@@ -20,6 +21,7 @@ class PRTFOLIO_12_24_API ACAIController_Enemy : public AAIController
 	GENERATED_BODY()
 public:
 	ACAIController_Enemy();
+	~ACAIController_Enemy();
 	virtual void BeginPlay() override;
 public:
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
@@ -92,4 +94,5 @@ protected:
 	FTimerHandle target_handler;
 	class UCStateComponent* State;
 	class UOperation_Context* Context;
+	IOperation_Strategy* oper;
 };

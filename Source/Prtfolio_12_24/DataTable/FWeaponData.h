@@ -14,13 +14,10 @@ struct FWeaponData : public FTableRowBase
 public:
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
 		FAttack_Combo Data;
-	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
-		bool LastAttack = false;
+	
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
 		EMouseBut Input_But;
 	
-	/*UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
-		EAttackTag_Type Attack_Tag;*/ // ¥Î√º
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
 		float Power = 1.f;
 	
@@ -42,6 +39,9 @@ public:
 
 	UPROPERTY(EditAnywhere)
 		bool bCanMove = true;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+		bool LastAttack = false;
 
 	UPROPERTY(EditAnywhere)
 		TSubclassOf<class UCameraShakeBase> ShakeClass;

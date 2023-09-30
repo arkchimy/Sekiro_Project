@@ -20,7 +20,8 @@ class UOperation_Strategy : public UInterface
 class PRTFOLIO_12_24_API IOperation_Strategy
 {
 	GENERATED_BODY()
-
+public:
+	
 	
 public:
 	virtual FVector Move(FVector Self_Loc) = 0; // Return Target_Pos

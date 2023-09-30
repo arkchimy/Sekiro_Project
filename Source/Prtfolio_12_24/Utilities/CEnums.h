@@ -21,6 +21,11 @@ enum class ECombat_Type : uint8		 //	Weapon Type
 {
 	Unarmed, Fist, SS, Archer, Wizard, Max,
 };
+UENUM(BlueprintType)
+enum class ECombat_Monster : uint8		 //	Weapon Type
+{
+	Partrol,Melee, Archer, Wizard, Max,
+};
 
 UENUM(BlueprintType)
 enum class EAttackTag_Type : uint8		 //	Weapon Type

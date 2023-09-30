@@ -32,5 +32,5 @@ private:
 	
 protected:
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
-		UDataTable* Montage_Table; //   이게중요
+		UDataTable* Montage_Table; //  상속시켜서 각자 초기화
 };

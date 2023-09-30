@@ -9,6 +9,9 @@ struct FWeaponData_Player : public FWeaponData
 {
 	GENERATED_BODY()
 public:
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+		bool LastAttack = false;
+
 	UPROPERTY(EditAnywhere)
 		bool bCanMove = false;
 

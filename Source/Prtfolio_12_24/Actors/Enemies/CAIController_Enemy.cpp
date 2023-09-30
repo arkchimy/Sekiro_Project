@@ -21,7 +21,7 @@
 #include "Strategy_Pattern/Context/Onyscidus_Context.h" // Onyscidus_Context
 #include "Strategy_Pattern/Operation_Context.h"	//Master_Context
 
-#include "Strategy_Pattern/Operation_Strategy.h"
+
 
 ACAIController_Enemy::ACAIController_Enemy()
 {
@@ -31,6 +31,14 @@ ACAIController_Enemy::ACAIController_Enemy()
 	SetPerception();
 }
 
+
+ACAIController_Enemy::~ACAIController_Enemy()
+{
+	CheckNull(oper);
+	UPatrol_Strategy* temp = Cast<UPatrol_Strategy>(oper);
+	temp->ConditionalBeginDestroy();
+	oper = nullptr;
+}
 
 //InitializeParentChain
 void ACAIController_Enemy::BeginPlay()
@@ -49,7 +57,7 @@ void ACAIController_Enemy::BeginPlay()
 	if (!!Context)
 	{
 		Context->Init_Context(GameActor);
-		IOperation_Strategy* oper = NewObject<UPatrol_Strategy>(Context,FName("Context_"), RF_MarkAsRootSet);
+		oper = NewObject<UPatrol_Strategy>(Context,FName("Context_"), RF_MarkAsRootSet);
 		Context->Set_Operation(oper);
 
 		target_location = Context->Move(GetPawn()->GetActorLocation());
@@ -120,11 +128,10 @@ bool ACAIController_Enemy::interp_Focus(FVector targetlotation, float deltatime)
 	FRotator rot = UKismetMathLibrary::RInterpTo(current, goal, deltatime, 0.01f);
 	
 	GetPawn()->SetActorRotation(FRotator(current.Pitch,rot.Yaw,rot.Roll));
-	//SetControlRotation(rot);
-	//CLog::Print(rot);
+	SetControlRotation(rot);
+
 	if (abs(current.Yaw - rot.Yaw) <= 0.1f)
 	{
-		//CLog::Print("Inter complete");
 		return true;
 	}
 	return false;
@@ -134,24 +141,24 @@ void ACAIController_Enemy::OnTargetDetected(AActor* Actor, FAIStimulus Stimulus)
 {
 	if (Stimulus.WasSuccessfullySensed()) 
 	{
-		
-		//BlackBoradCmp->SetValueAsObject("TargetActor", Actor);
+		Blackboard->SetValueAsObject("TargetActor", Actor);
+			
 		UKismetSystemLibrary::K2_ClearTimerHandle(this, target_handler);
 
 		CheckFalse(Operation_Type == EOperation_Type::Patrol); // 패트롤중이라면 실행
 
-		//UObject* BB_Target = BlackBoradCmp->GetValueAsObject("TargetActor");
-		//AGameActor* target = Cast<AGameActor>(BB_Target);
-		//if (!!target) // Target이 Null이 아니라면
-		//{ 
-		//	Operation_Type = EOperation_Type::Approach;
-		//	ACEnemy* enemy = Cast<ACEnemy>(GetPawn());
-		//	if (!!enemy)
-		//	{	// LookAt Target Notify 할떄 필요함
-		//		enemy->Set_TargetActor(target);
-		//	}
-		//
-		//}
+		UObject* BB_Target = Blackboard->GetValueAsObject("TargetActor");
+		AGameActor* target = Cast<AGameActor>(BB_Target);
+		if (!!target) // Target이 Null이 아니라면
+		{ 
+			Operation_Type = EOperation_Type::Approach;
+			ACEnemy* enemy = Cast<ACEnemy>(GetPawn());
+			if (!!enemy)
+			{	// LookAt Target Notify 할떄 필요함
+				enemy->Set_TargetActor(target);
+			}
+		
+		}
 	}
 	else
 		target_handler = UKismetSystemLibrary::K2_SetTimer(this, "Update_Target", 5.0f,false);
@@ -177,13 +184,13 @@ ETeamAttitude::Type ACAIController_Enemy::GetTeamAttitudeTowards(const AActor & 
 				return ETeamAttitude::Hostile;
 		}
 
-		/*if (!!Bot_Tid)
+		if (!!Bot_Tid)
 		{
 			if (TeamID == Bot_Tid->GetGenericTeamId())
 				return ETeamAttitude::Friendly;
 			else
 				return ETeamAttitude::Hostile;
-		}*/
+		}
 
 	}
 	else if(!!player)
@@ -231,17 +238,17 @@ void ACAIController_Enemy::Damaged_Target(AActor* Attacker)
 void ACAIController_Enemy::Update_Target()
 {
 	
-	//UObject* BB_Target = BlackBoradCmp->GetValueAsObject("TargetActor");
-	//AActor* BB_Player = Cast<AActor>(BB_Target);
-	//
-	//if (!!BB_Player) 
-	//{
-	//	FVector location = BB_Player->GetActorLocation();
-	//	BlackBoradCmp->SetValueAsVector("MoveTo_Location", location);
-	//	BlackBoradCmp->SetValueAsObject("TargetActor", NULL);
+	UObject* BB_Target = Blackboard->GetValueAsObject("TargetActor");
+	AActor* BB_Player = Cast<AActor>(BB_Target);
+	
+	if (!!BB_Player) 
+	{
+		FVector location = BB_Player->GetActorLocation();
+		Blackboard->SetValueAsVector("MoveTo_Location", location);
+		//Blackboard->SetValueAsObject("TargetActor", NULL);
 
-	//	
-	//}
+		
+	}
 
 }
 void ACAIController_Enemy::Monster_Dead()

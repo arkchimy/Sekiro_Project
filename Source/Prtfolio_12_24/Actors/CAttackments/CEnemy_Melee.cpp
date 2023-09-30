@@ -23,27 +23,21 @@ void ACEnemy_Melee::Tick(float DeltaTime)
 
 void ACEnemy_Melee::Monster_Attack()
 {
-	//CLog::Print(OwnerCharacter->GetName());
-	if(rand()%2 == 0)
-		Button_Event(EMouseBut::Left);
-	else
-		Button_Event(EMouseBut::Right);
-
-	if (AttackTag_Delegate.IsBound()) //  Enemy 에서만 실행 됨
-		AttackTag_Delegate.Broadcast(LastDatas.Collision_Tag);
+	//if (AttackTag_Delegate.IsBound()) //  Enemy 에서만 실행 됨
+	//	AttackTag_Delegate.Broadcast(LastDatas.Collision_Tag);
 }
 
 UAnimMontage* ACEnemy_Melee::Get_NextMontage()
 {
-	if (rand() % 2 == 0)
-		Button_Event(EMouseBut::Left);
-	else
-		Button_Event(EMouseBut::Right);
-	if (AttackTag_Delegate.IsBound()) //  Enemy 에서만 실행 됨
-		AttackTag_Delegate.Broadcast(LastDatas.Collision_Tag);
+	//if (rand() % 2 == 0)
+	//	Button_Event(EMouseBut::Left);
+	//else
+	//	Button_Event(EMouseBut::Right);
+	//if (AttackTag_Delegate.IsBound()) //  Enemy 에서만 실행 됨
+	//	AttackTag_Delegate.Broadcast(LastDatas.Collision_Tag);
 
-	return LastDatas.Data.Montage;
-	
+	//return LastDatas.Data.Montage;
+	return nullptr;
 }
 
 //void ACEnemy_Melee::Do_LAttack()
@@ -77,35 +71,14 @@ void ACEnemy_Melee::End_Attack()
 
 void ACEnemy_Melee::Button_Event(EMouseBut input)
 {
-	if (input == EMouseBut::Left)
-	{
-		if (State->IsIdleState()) // 공격의 시작
-		{
-			Seach_ComboIndex(input); //Attack_Cnt Init 
-			State->Set_ActionMode();
+	//if (State->IsIdleState()) // 공격의 시작
+	//{
+	//	Seach_ComboIndex(input); //Attack_Cnt Init 
+	//	State->Set_ActionMode();
 
-			LastDatas = ComboData;// Hit Stop 을 적용하려고 index 저장 개념
-			Montage_Play(ComboData);
-
-			if (!ComboData.bCanMove)
-				State->Set_UnMove();
-		}
-
-	}
-	if (input == EMouseBut::Right)
-	{
-		if (State->IsIdleState()) // 공격의 시작
-		{
-			Seach_ComboIndex(input); //Attack_Cnt Init 
-			State->Set_ActionMode();
-			LastDatas = ComboData;
-			Montage_Play(ComboData);
-
-			if (!ComboData.bCanMove)
-				State->Set_UnMove();
-
-		}
-	}
+	//	LastDatas = ComboData;// Hit Stop 을 적용하려고 index 저장 개념
+	//	Montage_Play(ComboData);
+	//}
 }
 
 void ACEnemy_Melee::Montage_Play(FWeaponData_Enemy input)
@@ -153,18 +126,9 @@ void ACEnemy_Melee::TakeOverlap_Actor(const FHitResult& Hit, FVector Hit_locatio
 
 	if (!!overlap_Actor)
 	{
-		//FVector hit_location = overlap_Actor->GetMesh()->GetSocketLocation(hit_bone);
 		FTransform trans;
 		trans.SetLocation(Hit_location);
 		trans.SetRotation(FQuat(GetActorRotation()));
-
-		if (FMath::IsNearlyZero(LastDatas.Hit_Stop) == false)
-		{
-			UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 1e-1f);
-			UKismetSystemLibrary::K2_SetTimer(this, "Dilation_Return", LastDatas.Hit_Stop * 1e-1f, false);
-		}
-		Effect_Trans = trans;
-
 	}
 
 }
