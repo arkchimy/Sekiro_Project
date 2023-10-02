@@ -12,7 +12,7 @@ FVector UPatrol_Strategy::Move(FVector Self_Loc)
 void UPatrol_Strategy::Action(class UDataTable* Montage_Table, class AGameActor* OwnerActor, EMouseBut direction)
 {
 	CLog::Log("Patrol_Action");//operation변경은 Notify로
-	
+	// list 
 	// Action (FVector , Target = nullptr); 을 받고 
 	// FVector 의 위치와 방향함수를 구함. Move를 통해 Interp를 통한 보간 회전후 방향이 Forward가 될시 Forward로 Montage실행
 	// if R or L 일 경우 Move호출 해서 보간회전하기  
