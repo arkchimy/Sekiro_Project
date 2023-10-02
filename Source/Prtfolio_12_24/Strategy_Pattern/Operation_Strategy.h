@@ -25,6 +25,6 @@ public:
 	
 public:
 	virtual FVector Move(FVector Self_Loc) = 0; // Return Target_Pos
-	virtual void Action(class UDataTable* table, class AGameActor* OwnerActor, EMouseBut direction) = 0; // Owner & Target Dot, Cross Product 
+	virtual void Action(FVector Target_Location, class UDataTable* table, class AGameActor* OwnerActor, EMouseBut direction) = 0; // Owner & Target Dot, Cross Product 
 	
 };

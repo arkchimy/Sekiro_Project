@@ -150,7 +150,7 @@ void ACAIController_Enemy::OnTargetDetected(AActor* Actor, FAIStimulus Stimulus)
 		UObject* BB_Target = Blackboard->GetValueAsObject("TargetActor");
 		AGameActor* target = Cast<AGameActor>(BB_Target);
 		if (!!target) // Target이 Null이 아니라면
-		{ 
+		{	// Approach 적용 시점
 			Operation_Type = EOperation_Type::Approach;
 			ACEnemy* enemy = Cast<ACEnemy>(GetPawn());
 			if (!!enemy)
@@ -208,14 +208,6 @@ ETeamAttitude::Type ACAIController_Enemy::GetTeamAttitudeTowards(const AActor & 
 
 void ACAIController_Enemy::BlackBoard_Update()
 {
-	
-	/*BlackBoradCmp->SetValueAsEnum(FName("Operation"),int8(Operation_Type));
-	
-	if (!!State) 
-	{
-		MoveUpdate(State->CanMove()); 
-	}
-	BlackBoradCmp->GetValueAsEnum(FName("Operation"));*/
 
 }
 void ACAIController_Enemy::MoveUpdate(bool inval)
@@ -264,7 +256,7 @@ void ACAIController_Enemy::Monster_Action()
 	//CheckNull(Context);
 	if (!!Context) 
 	{
-		Context->Action();
+		Context->Action(FVector(0,0,0));
 		return;
 	}
 	CLog::Print("Context is null");

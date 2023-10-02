@@ -18,6 +18,6 @@ class PRTFOLIO_12_24_API UPatrol_Strategy : public UObject , public IOperation_S
 	GENERATED_BODY()
 public:
 	virtual FVector Move(FVector Self_Loc) override; // Return Target_Pos
-	virtual void Action(class UDataTable* table, class AGameActor* OwnerActor, EMouseBut direction) override;
+	virtual void Action(FVector Target_Location, class UDataTable* table, class AGameActor* OwnerActor, EMouseBut direction) override;
 
 };

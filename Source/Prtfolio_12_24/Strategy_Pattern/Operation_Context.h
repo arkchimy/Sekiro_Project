@@ -21,9 +21,9 @@ public:
 	void Set_Operation(class IOperation_Strategy* input);
 
 	virtual FVector Move(FVector Self_Loc);
-	virtual void Action(class AGameActor* Target = nullptr);
-	void Hiteed_Direction(AActor* Causer, EMouseBut* direction);
-
+	virtual void Action(FVector Target_Location,class AGameActor* Target = nullptr);
+	void Hiteed_Direction(AActor* Causer, EMouseBut* direction);	// Target != nullptr;
+	void Hiteed_Direction(FVector Loc, EMouseBut* direction);	    // Target ==  nullptr;
 	void Init_Context(class AGameActor* Owner);
 
 private:

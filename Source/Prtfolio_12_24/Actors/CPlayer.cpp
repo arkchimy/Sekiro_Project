@@ -116,7 +116,7 @@ void ACPlayer::BeginPlay()
 void ACPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	
+
 	InteractionBuild_Update();
 }
 

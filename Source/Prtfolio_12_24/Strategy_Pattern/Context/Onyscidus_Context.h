@@ -15,5 +15,5 @@ class PRTFOLIO_12_24_API UOnyscidus_Context : public UOperation_Context
 	GENERATED_BODY()
 public:
 	UOnyscidus_Context();
-	virtual void Action(class AGameActor* Target = nullptr) override;
+	virtual void Action(FVector Target_Location, class AGameActor* Target = nullptr) override;
 };
