@@ -15,6 +15,11 @@ enum class EDirection : uint8		 //	Weapon Type
 {
 	Front, Back ,Left, Right,Max,
 };
+UENUM(BlueprintType)
+enum class Ecoordinate : uint8		 //	Weapon Type
+{
+	Empty,RU, RD, LD, LU, Max, //Right Down Right Up
+};
 
 UENUM(BlueprintType)
 enum class ECombat_Type : uint8		 //	Weapon Type

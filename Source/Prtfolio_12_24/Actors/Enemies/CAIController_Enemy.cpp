@@ -251,12 +251,13 @@ void ACAIController_Enemy::Monster_Dead()
 	BehaviorTreecmp->StopTree();
 	ClearFocus(EAIFocusPriority::Default);*/
 }
-void ACAIController_Enemy::Monster_Action()
+
+void ACAIController_Enemy::Monster_Action(FVector Loc)
 {
 	//CheckNull(Context);
-	if (!!Context) 
+	if (!!Context)
 	{
-		Context->Action(FVector(0,0,0));
+		Context->Action(Loc);
 		return;
 	}
 	CLog::Print("Context is null");

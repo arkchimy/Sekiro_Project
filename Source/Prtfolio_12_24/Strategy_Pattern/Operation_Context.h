@@ -24,6 +24,9 @@ public:
 	virtual void Action(FVector Target_Location,class AGameActor* Target = nullptr);
 	void Hiteed_Direction(AActor* Causer, EMouseBut* direction);	// Target != nullptr;
 	void Hiteed_Direction(FVector Loc, EMouseBut* direction);	    // Target ==  nullptr;
+
+	void Get_coordinate(const FRotator Rot,Ecoordinate* coor);
+	EMouseBut FindLookAtTarget(Ecoordinate* Owner, Ecoordinate* Target);
 	void Init_Context(class AGameActor* Owner);
 
 private:

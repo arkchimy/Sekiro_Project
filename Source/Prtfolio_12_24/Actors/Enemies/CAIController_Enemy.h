@@ -86,9 +86,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void Monster_Dead(); // Operation & SetCanMove
 	void Set_TeamId(int32 val) { TeamID = val; }
-	UFUNCTION(BlueprintCallable)
-		void Monster_Action(); // Operation & SetCanMove
 	
+	UFUNCTION(BlueprintCallable)
+		void Monster_Action(FVector Loc); // TargetActor Loc || MovePoint;
 protected:
 	FString Enemy_Type = "Melee";
 	FTimerHandle target_handler;
