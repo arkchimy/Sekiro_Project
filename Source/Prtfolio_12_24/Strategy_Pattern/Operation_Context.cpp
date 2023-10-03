@@ -104,6 +104,7 @@ void UOperation_Context::Hiteed_Direction(FVector Target_Loc, EMouseBut* directi
 	
 	CheckNull(OwnerActor);
 	FRotator Owner_Rot = OwnerActor->GetActorRotation();
+	Owner_Rot.Yaw += 90.f;
 	FRotator Target_Rot = UKismetMathLibrary::FindLookAtRotation(OwnerActor->GetActorLocation(), Target_Loc);
 	Ecoordinate Owner_Coor;
 	Ecoordinate Target_Coor;
