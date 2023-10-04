@@ -88,7 +88,7 @@ public:
 	void Set_TeamId(int32 val) { TeamID = val; }
 	
 	UFUNCTION(BlueprintCallable)
-		void Monster_Action(FVector Loc); // TargetActor Loc || MovePoint;
+		void Monster_Action(FVector Loc, class AGameActor* TargetActor = nullptr); // TargetActor Loc || MovePoint;
 protected:
 	FString Enemy_Type = "Melee";
 	FTimerHandle target_handler;

@@ -8,7 +8,7 @@ UOnyscidus_Context::UOnyscidus_Context()
 	
 }
 
-void UOnyscidus_Context::Action(FVector Target_Location, AGameActor* Target)
+void UOnyscidus_Context::Action(FVector Target_Loc, AGameActor* Target)
 {
-	UOperation_Context::Action(Target_Location, Target);
+	UOperation_Context::Action(Target_Loc, Target);
 }

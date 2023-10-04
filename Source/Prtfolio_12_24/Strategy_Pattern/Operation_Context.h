@@ -20,7 +20,7 @@ class PRTFOLIO_12_24_API UOperation_Context : public UObject
 public:
 	void Set_Operation(class IOperation_Strategy* input);
 
-	virtual FVector Move(FVector Self_Loc);
+	virtual void Move(FVector Self_Loc);
 	virtual void Action(FVector Target_Location,class AGameActor* Target = nullptr);
 	void Hiteed_Direction(AActor* Causer, EMouseBut* direction);	// Target != nullptr;
 	void Hiteed_Direction(FVector Loc, EMouseBut* direction);	    // Target ==  nullptr;
@@ -36,4 +36,5 @@ private:
 protected:
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
 		UDataTable* Montage_Table; //  상속시켜서 각자 초기화
+	FVector Target_Location = FVector(0, 0, 0);
 };

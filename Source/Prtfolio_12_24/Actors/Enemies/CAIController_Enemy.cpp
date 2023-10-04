@@ -47,8 +47,6 @@ void ACAIController_Enemy::BeginPlay()
 	State = CHelpers::GetComponent<UCStateComponent>(GetPawn());
 
 
-	FVector target_location;
-
 	AGameActor* GameActor = Cast<AGameActor>(GetPawn());
 	if(!!GameActor)
 		TeamID = GameActor->GetGenericTeamId();
@@ -60,7 +58,7 @@ void ACAIController_Enemy::BeginPlay()
 		oper = NewObject<UPatrol_Strategy>(Context,FName("Context_"), RF_MarkAsRootSet);
 		Context->Set_Operation(oper);
 
-		target_location = Context->Move(GetPawn()->GetActorLocation());
+	
 	}
 }
 
@@ -252,12 +250,12 @@ void ACAIController_Enemy::Monster_Dead()
 	ClearFocus(EAIFocusPriority::Default);*/
 }
 
-void ACAIController_Enemy::Monster_Action(FVector Loc)
+void ACAIController_Enemy::Monster_Action(FVector Loc, AGameActor* TargetActor)
 {
 	//CheckNull(Context);
 	if (!!Context)
 	{
-		Context->Action(Loc);
+		Context->Action(Loc, TargetActor);
 		return;
 	}
 	CLog::Print("Context is null");
